@@ -1,0 +1,25 @@
+.wrapper {
+  height: 256px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.button {
+  width: 80px;
+  height: 24px;
+  box-sizing: border-box;
+  color: var(--doc-c4);
+  border: 1px solid var(--doc-c3);
+  background-color: transparent;
+  text-align: center;
+  font-size: 12px;
+  line-height: 18px;
+  border-radius: 4px;
+  margin-top: 16px;
+  cursor: pointer;
+  &:hover {
+    color: var(--doc-c12);
+    border-color: var(--doc-c12);
+  }
+}

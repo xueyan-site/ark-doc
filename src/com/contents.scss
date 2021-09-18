@@ -1,0 +1,38 @@
+.node {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 2px 0;
+  cursor: pointer;
+  &.active {
+    .nodeLabel {
+      color: var(--doc-c12);
+    }
+  }
+  &.large {
+    .nodeIcon {
+      margin-top: 1px;
+      margin-right: 4px;
+      width: 16px;
+      height: 16px;
+    }
+    .nodeLabel {
+      line-height: 18px;
+    }
+  }
+}
+.nodeIcon {
+  flex: none;
+  margin-top: 2px;
+  margin-right: 2px;
+  width: 12px;
+  height: 12px;
+}
+.nodeLabel {
+  flex: 1;
+  color: var(--doc-c6);
+  font-size: 12px;
+  line-height: 16px;
+  &:hover {
+    text-decoration: underline;
+  }
+}

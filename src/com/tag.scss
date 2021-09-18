@@ -1,0 +1,16 @@
+.wrapper {
+  display: inline-block;
+  &:not(:first-child) {
+    margin-left: 6px;
+  }
+}
+.tag {
+  background-color: var(--doc-c11);
+  padding: 0 6px;
+  color: var(--doc-c8);
+  font-size: 12px;
+  line-height: 16px;
+}
+.opt {
+  width: 100%;
+}

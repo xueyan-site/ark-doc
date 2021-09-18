@@ -1,0 +1,39 @@
+.avatarLine {
+  margin-bottom: 20px;
+}
+.project {
+  padding: 0 8px;
+  margin-bottom: 16px;
+}
+.title {
+  margin: 0 0 8px 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--doc-c6);
+  font-weight: normal;
+}
+.tags {
+  display: flex;
+}
+.tab {
+  margin-bottom: 16px;
+}
+.contents {
+  margin-bottom: 12px;
+}
+.messages {
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+.desc {
+  margin-bottom: 12px;
+  color: var(--doc-c6);
+  font-size: 14px;
+  line-height: 20px;
+  padding: 0 8px;
+}
+.footer {
+  color: var(--doc-c4);
+  padding: 0 8px;
+}

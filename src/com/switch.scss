@@ -1,0 +1,47 @@
+.wrapper {
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 32px;
+  background-color: var(--doc-c9);
+  box-shadow: 0 1px 4px var(--doc-c1);
+}
+.opt {
+  flex: 1;
+  height: 100%;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--doc-c4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .active {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      right: -8px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background-color: var(--doc-c3);
+    }
+  }
+  &:hover {
+    color: var(--doc-c12);
+    .active::after {
+      background-color: var(--doc-c12);
+    }
+  }
+  &.current {
+    color: var(--doc-c6);
+    background-color: var(--doc-c8);
+    box-shadow: 0 0 4px var(--doc-c1);
+    .active::after {
+      background-color: var(--doc-c12);
+    }
+  }
+}
