@@ -11,9 +11,11 @@ import type { Article } from '../com/contents'
 import type { DocData } from '../store'
 
 export default function Side({
+  style,
   className,
   onChange
 }: {
+  style?: React.CSSProperties
   className?: string
   onChange?: (node: Article, doc: DocData) => void
 }) {
@@ -36,7 +38,7 @@ export default function Side({
   const handleChange = onChange && ((node: Article) => onChange(node, doc))
   
   return (
-    <aside className={className}>
+    <aside className={className} style={style}>
       <AvatarLine className={styles.avatarLine} />
       <div className={styles.project}>
         <h1 className={styles.title}>{doc.name}</h1>

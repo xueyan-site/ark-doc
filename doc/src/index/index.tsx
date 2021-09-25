@@ -2,6 +2,7 @@ import React from 'react'
 import Doc from 'xueyan-react-doc'
 import contents from './contents'
 import messages from './messages'
+import packageInfo from '../../../package.json'
 import type { PageProps } from 'xueyan-react'
 import type { LinkImage, LinkText } from 'xueyan-react-doc'
 
@@ -14,7 +15,7 @@ const LOGOS: LinkImage[] = [
   {
     title: 'github',
     src: XT_PATH + 'github.png',
-    href: 'https://github.com/xueyan-site',
+    href: packageInfo.repository.url,
   },
   {
     title: 'xueyan-site',
@@ -36,10 +37,10 @@ const VERSIONS: LinkText[] = [
 export default function Index({ page, pager }: PageProps) {
   return (
     <Doc
-      id={XT_ID}
-      name={XT_NAME}
-      version={XT_VERSION}
-      description="This is a react component store tools for xueyan-typescript-cli tool"
+      id={packageInfo.name}
+      name={packageInfo.name}
+      version={packageInfo.version}
+      description={packageInfo.description}
       avatar={AVATAR}
       logos={LOGOS}
       versions={VERSIONS}
@@ -55,7 +56,7 @@ export default function Index({ page, pager }: PageProps) {
     >
       <div>author: {XT_AUTHOR_NAME}</div>
       <div>concat: {XT_AUTHOR_EMAIL}</div>
-      <div>copyright © 2021 {XT_NAME}</div>
+      <div>copyright © 2021 {packageInfo.name}</div>
     </Doc>
   )
 }
