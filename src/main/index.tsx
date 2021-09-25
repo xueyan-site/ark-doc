@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createElement, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styles from './index.scss'
 import Skeleton from '../com/skeleton'
 import Empty from '../com/empty'
@@ -13,20 +13,23 @@ enum STATUS {
 }
 
 export default function Main({
+  menuNode,
   className
 }: {
+  menuNode?: React.ReactNode
   className?: string
 }) {
   const { article } = useDoc()
   const [status, setStatus] = useState<STATUS>(STATUS.INIT)
-  const moduleRef = useRef<React.ComponentType<any>|undefined>()
+  const renderRef = useRef<React.ComponentType<any>|undefined>()
+  const Render = renderRef.current
 
   useEffect(() => {
     if (article && article.content) {
       setStatus(STATUS.LOADING)
       article.content().then(data => {
         if (data && data.default) {
-          moduleRef.current = data.default
+          renderRef.current = data.default
         }
         setStatus(STATUS.SUCCESS)
       }).catch(() => {
@@ -39,6 +42,7 @@ export default function Main({
 
   return article ? (
     <div className={className}>
+      {menuNode}
       <h1 className={styles.title}>{article.label}</h1>
       {article.banner && (
         <img className={styles.banner} src={article.banner} />
@@ -58,11 +62,7 @@ export default function Main({
       ) : status === STATUS.FAILED ? (
         <Failed />
       ) : status === STATUS.SUCCESS ? (
-        moduleRef.current ? (
-          <div className={styles.content}>
-            {createElement(moduleRef.current)}
-          </div>
-        ) : <Empty />
+        Render ? <Render /> : <Empty />
       ) : null}
     </div>
   ) : null

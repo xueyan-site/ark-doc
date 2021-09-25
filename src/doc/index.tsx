@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import styles from './index.scss'
 import Side from '../side'
 import Main from '../main'
 import { DocProvider } from '../store'
+import useVisibleStyle from '../utl/use-visible-style'
 import type { Article } from '../com/contents'
 import type { DocStore, DocConfig, DocData } from '../store'
 
@@ -52,15 +53,66 @@ export default function Doc({
     <DocProvider ref={docRef} data={config}>
       <div 
         ref={domRef}
-        className={cn(styles.wrapper, className, {
-          [styles.small]: width < 1024,
-          [styles.large]: width >= 1536
-        })}
         style={style}
+        className={cn(
+          styles.wrapper,
+          className,
+          width < 768
+            ? styles.phone 
+            : width < 1024
+            ? styles.small
+            : width >= 1536
+            ? styles.large
+            : undefined
+        )}
       >
-        <Side className={styles.side} onChange={onChange}/>
-        <Main className={styles.main} />
+        <DocInner
+          onChange={onChange}
+          width={width}
+        />
       </div>
     </DocProvider>
+  )
+}
+
+function DocInner({
+  width,
+  onChange
+}: {
+  width: number
+  onChange?: (node: Article, doc: DocData) => void
+}) {
+  const isPhone = width < 768
+  const [visible, setVisible] = useState<boolean>(false)
+  const [visibleStyle, status] = useVisibleStyle(visible)
+
+  return width < 280 ? null : (
+    <Fragment>
+      {isPhone ? (
+        <div 
+          style={visibleStyle}
+          className={styles.mask}
+          onClick={() => setVisible(false)}
+        />
+      ) : null}
+      <Side 
+        className={styles.side} 
+        onChange={onChange}
+        style={isPhone ? {
+          transition: `transform 200ms`,
+          transform: `translate3D(${status > 0 ? 0 : -100}%,0,0)`,
+          display: status < 0 ? 'none' : 'block'
+        } : undefined}
+      />
+      <Main 
+        className={styles.main}
+        menuNode={isPhone ? (
+          <div
+            className={styles.menu}
+            onClick={() => setVisible(true)}
+          >MENU</div>
+        ) : null}
+      />
+    </Fragment>
   )
 }
