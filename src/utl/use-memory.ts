@@ -3,8 +3,7 @@ import { useCallback, useEffect, useState } from "react"
 /**
  * use localStorage cache
  * @param key localStorage data key
- * @param state initialization state
- * @param justNull read state from localStorage when null
+ * @param init initialize state
  * @returns 
  */
 export default function useMemory<T>(key: string, init: (cache?: any) => T): [

@@ -44,7 +44,7 @@ export default function Doc({
     const store = docRef.current
     if (fetch && store) {
       fetch(store.id).then(data => {
-        store.setPart(store.configToData(data))
+        store.setPart(store.mergeConfig(data))
       })
     }
   }, [])
