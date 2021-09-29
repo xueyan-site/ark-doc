@@ -1,9 +1,9 @@
 {
   "name": "xueyan-react-doc",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "xueyan-site <yang@xueyan.site>",
   "license": "MIT",
-  "description": "React Document Render",
+  "description": "React Document Config Component",
   "main": "dist/node",
   "types": "dist/def",
   "module": "dist/web",
@@ -29,18 +29,17 @@
     "serve-doc": "xt serve doc"
   },
   "dependencies": {
-    "@babel/runtime": "^7.12.0"
+    "@babel/runtime": "^7.12.0",
+    "xueyan-react-store": "^2.0.3"
   },
   "peerDependencies": {
     "classnames": "^2.3.0",
-    "react": ">=16.8.0",
-    "xueyan-react-store": "^2.0.3"
+    "react": ">=16.8.0"
   },
   "devDependencies": {
     "@types/react": ">=16.8.0",
     "classnames": "^2.3.0",
     "react": ">=16.8.0",
-    "typescript": "^4.0.0",
-    "xueyan-react-store": "^2.0.3"
+    "typescript": "^4.0.0"
   }
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import Store, { createProvider, useData } from 'xueyan-react-store'
-import { SIDE_TAB_TYPE } from './common'
+import Store, { createProvider, useData, useStore } from 'xueyan-react-store'
+import { SIDE_TAB_TYPE, DOC_STORE_KEY } from './constants'
 import { parseArticles } from './com/contents'
 import type { LinkText } from './com/link-text-render'
 import type { LinkImage } from './com/link-image-render'
@@ -121,13 +121,18 @@ export interface DocData extends DecCommonData {
   sideTab?: SIDE_TAB_TYPE
 }
 
-const DOC_STORE_KEY = 'XT_S_DOC'
-
 /**
  * page data hook
  */
 export function useDoc() {
   return useData<DocData>(DOC_STORE_KEY)
+}
+
+/**
+ * page data hook
+ */
+export function useDocStore() {
+  return useStore<DocStore>(DOC_STORE_KEY)
 }
 
 function configToData(config: DocConfig): DocData {
@@ -173,7 +178,7 @@ export class DocStore extends Store<DocData> {
     this.config = config
   }
 
-  configToData(config: Partial<DocConfig>) {
+  mergeConfig(config: Partial<DocConfig>) {
     return configToData(
       Object.assign({}, this.config, config)
     )
