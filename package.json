@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.0",
-    "xueyan-react-store": "^2.0.3"
+    "xueyan-react-store": "^2.0.6"
   },
   "peerDependencies": {
     "classnames": "^2.3.0",
