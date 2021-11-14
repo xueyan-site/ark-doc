@@ -3,6 +3,7 @@
   flex-flow: row nowrap;
   padding: 2px 0;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   &.active {
     .nodeLabel {
       color: var(--doc-c12);

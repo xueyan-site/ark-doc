@@ -1,5 +1,6 @@
 .wrapper {
   position: relative;
+  -webkit-tap-highlight-color: transparent;
 }
 .pointer {
   cursor: pointer;
@@ -27,6 +28,7 @@
   line-height: 18px;
   border-radius: 3px;
   color: var(--doc-c4);
+  -webkit-tap-highlight-color: transparent;
   a {
     color: inherit;
   }
