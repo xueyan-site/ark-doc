@@ -661,26 +661,18 @@ xtend@^4.0.0, xtend@^4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
-xueyan-react-markdown@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/xueyan-react-markdown/-/xueyan-react-markdown-2.0.1.tgz#f9cc2ddce55e5a42406991c67bcab33328538c22"
-  integrity sha512-xs4P04TOSlhqjOuOFIYfWagmyv9iBo6YJju/YHvfRLvp63HAFThZRcncZeIT1r16fbVisOomEAHFfz2imlbvtQ==
+xueyan-react-markdown@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/xueyan-react-markdown/-/xueyan-react-markdown-2.0.3.tgz#0d0dfda7d8e5e2b1584ae16c55ce9d09644dd3b8"
+  integrity sha512-5B0XNAjfOMJAwSwwD0HZsiyHtTAsAEKG7yDYqDil8CmK21b2K4OFHjQTgL5088im87iBuPgy3Hc3DoQCiOOWdg==
   dependencies:
     "@babel/runtime" "^7.12.0"
     react-markdown "^5.0.3"
     react-syntax-highlighter "^15.4.3"
     remark-gfm "^1.0.0"
-    xueyan-react-store "^2.0.3"
+    xueyan-react-store "^2.0.6"
 
-xueyan-react-store@^2.0.3:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/xueyan-react-store/-/xueyan-react-store-2.0.5.tgz#3050921e6565d2c48370bb9ab9a12193dd86248f"
-  integrity sha512-jobAtBcirpa88oG23JfJHz/2l2jFqlJW/a58WAhPHzIdFWPG3FcF1+AR0sGpvxUzTNpYpJY9NDqcOcnwBqYNfg==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    eventemitter3 "^4.0.7"
-
-xueyan-react-store@^2.0.5:
+xueyan-react-store@^2.0.5, xueyan-react-store@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/xueyan-react-store/-/xueyan-react-store-2.0.6.tgz#f871db29970d40d5a411975a8a38c042d99f423e"
   integrity sha512-BrWIM1eYHeCxEWrA6T+jrx4sBX2lJtQw3ICXKLtS98T7U4Rcl3j0TV2uS1f4sDJCfsbeITmpA+pJu1wa8Eis+A==

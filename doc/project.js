@@ -5,6 +5,12 @@ module.exports = {
   index: 'zh',
   track: false,
   path: pkg.name,
+  serve: {
+    port: 10002
+  },
+  start: {
+    port: 15002
+  },
   alias: {
     src: 'src',
     ast: 'pub/ast',
