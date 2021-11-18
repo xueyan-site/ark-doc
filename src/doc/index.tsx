@@ -1,12 +1,11 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import styles from './index.scss'
-import Side from '../side'
-import Main from '../main'
 import { DocProvider } from '../store'
-import useVisibleStyle from '../utl/use-visible-style'
 import type { Article } from '../com/contents'
 import type { DocStore, DocConfig, DocData } from '../store'
+import DocInner from './inner'
+import useViewportHeight from '../utl/use-viewport-height'
 
 export interface DocProps extends DocConfig {
   className?: string
@@ -24,11 +23,16 @@ export interface DocProps extends DocConfig {
    * @param id project id
    */
   fetch?: (id: string) => Promise<Partial<DocConfig>>
+  /**
+   * side footer
+   */
+  children?: React.ReactNode
 }
 
 export default function Doc({
   className,
   style,
+  children,
   fetch,
   onChange,
   ...config
@@ -36,15 +40,17 @@ export default function Doc({
   const docRef = useRef<DocStore>(null)
   const domRef = useRef<HTMLDivElement>(null)
   const [width, setWidth] = useState<number>(0)
+  const maxHeight = useViewportHeight()
 
   useEffect(() => {
-    if (domRef.current) {
-      setWidth(domRef.current.offsetWidth)
+    const dom = domRef.current
+    if (dom) {
+      setWidth(dom.offsetWidth)
     }
-    const store = docRef.current
-    if (fetch && store) {
-      fetch(store.id).then(data => {
-        store.setPart(store.mergeConfig(data))
+    const doc = docRef.current
+    if (doc && fetch) {
+      fetch(doc.id).then(data => {
+        doc.setPart(doc.mergeConfig(data))
       })
     }
   }, [])
@@ -53,66 +59,28 @@ export default function Doc({
     <DocProvider ref={docRef} data={config}>
       <div 
         ref={domRef}
-        style={style}
+        style={{
+          ...style,
+          maxHeight
+        }}
         className={cn(
           styles.wrapper,
           className,
-          width < 768
+          width < 898
             ? styles.phone 
-            : width < 1024
+            : width < 1150
             ? styles.small
-            : width >= 1536
-            ? styles.large
+            : width <= 1650
+            ? styles.middle
             : undefined
         )}
       >
-        <DocInner
-          onChange={onChange}
-          width={width}
-        />
+        {width < 280 ? null : (
+          <DocInner onChange={onChange} isPhone={width < 898}>
+            {children}
+          </DocInner>
+        )}
       </div>
     </DocProvider>
-  )
-}
-
-function DocInner({
-  width,
-  onChange
-}: {
-  width: number
-  onChange?: (node: Article, doc: DocData) => void
-}) {
-  const isPhone = width < 768
-  const [visible, setVisible] = useState<boolean>(false)
-  const [visibleStyle, status] = useVisibleStyle(visible)
-
-  return width < 280 ? null : (
-    <Fragment>
-      {isPhone ? (
-        <div 
-          style={visibleStyle}
-          className={styles.mask}
-          onClick={() => setVisible(false)}
-        />
-      ) : null}
-      <Side 
-        className={styles.side} 
-        onChange={onChange}
-        style={isPhone ? {
-          transition: `transform 200ms`,
-          transform: `translate3D(${status > 0 ? 0 : -100}%,0,0)`,
-          display: status < 0 ? 'none' : 'block'
-        } : undefined}
-      />
-      <Main 
-        className={styles.main}
-        menuNode={isPhone ? (
-          <div
-            className={styles.menu}
-            onClick={() => setVisible(true)}
-          >MENU</div>
-        ) : null}
-      />
-    </Fragment>
   )
 }

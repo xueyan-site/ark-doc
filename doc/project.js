@@ -14,6 +14,7 @@ module.exports = {
   alias: {
     src: 'src',
     ast: 'pub/ast',
+    com: 'pub/com',
     utl: 'pub/utl',
     'xueyan-react-doc': '../src'
   },

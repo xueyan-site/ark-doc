@@ -3,7 +3,7 @@ import styles from './index.scss'
 import Skeleton from '../com/skeleton'
 import Empty from '../com/empty'
 import Failed from '../com/failed'
-import { useDoc } from '../store'
+import { useDocData } from '../store'
 
 enum STATUS {
   INIT = 0,
@@ -19,7 +19,7 @@ export default function Main({
   menuNode?: React.ReactNode
   className?: string
 }) {
-  const { article } = useDoc()
+  const { article } = useDocData()
   const [status, setStatus] = useState<STATUS>(STATUS.INIT)
   const renderRef = useRef<React.ComponentType<any>|undefined>()
   const Render = renderRef.current

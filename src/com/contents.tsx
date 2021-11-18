@@ -67,7 +67,6 @@ export function parseArticles(id: string | undefined, list: ArticleMeta[]) {
 }
 
 export default function Contents({
-  size,
   hidden,
   article,
   articles,
@@ -76,7 +75,6 @@ export default function Contents({
   style,
   className
 }: {
-  size?: 'large'
   hidden?: boolean
   article?: Article
   articles: Article[]
@@ -112,7 +110,6 @@ export default function Contents({
       {articles.map(item => (
         <Node
           key={item.id}
-          size={size}
           node={item}
           article={article}
           breadcrumb={breadcrumb}
@@ -126,7 +123,6 @@ export default function Contents({
 }
 
 function Node({
-  size,
   node,
   article,
   breadcrumb,
@@ -134,7 +130,6 @@ function Node({
   onShrink,
   onChange
 }: {
-  size?: 'large'
   node: Article
   article?: Article
   breadcrumb: Article[]
@@ -150,10 +145,9 @@ function Node({
     <Fragment>
       <div
         className={cn(styles.node, {
-          [styles.active]: isActive,
-          [styles.large]: size === 'large'
+          [styles.active]: isActive
         })}
-        style={{ paddingLeft: level * 8 }}
+        style={{ paddingLeft: level * 12 }}
         onClick={event => onShrink(event, node)}
       >
         <img 
@@ -170,7 +164,6 @@ function Node({
       {(hasChildren && !isShrinks) ? node.children.map(item => (
         <Node
           key={item.id}
-          size={size}
           node={item}
           article={article}
           breadcrumb={breadcrumb}

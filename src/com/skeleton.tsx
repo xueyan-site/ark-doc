@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './skeleton.scss'
-import useVisibleStyle from '../utl/use-visible-style'
+import useFadeStyle from '../utl/use-fade-style'
 
 function Skeleton({
   visible,
@@ -13,9 +13,9 @@ function Skeleton({
   className?: string
   style?: React.CSSProperties
 }) {
-  const [visibleStyle] = useVisibleStyle(visible, 1000)
+  const fadeStyle = useFadeStyle(visible, 1000)
   return (
-    <div className={className} style={{ ...style, ...visibleStyle }}>
+    <div className={className} style={{ ...style, ...fadeStyle }}>
       {children}
     </div>
   )

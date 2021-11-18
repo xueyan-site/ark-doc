@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cn from 'classnames'
 import styles from './select.scss'
-import useVisibleStyle from '../utl/use-visible-style'
+import useFadeStyle from '../utl/use-fade-style'
 
 interface SelectOption<T> {
   value: T
@@ -24,7 +24,7 @@ export default function Select<T>({
   onChange?: (value?: T, option?: SelectOption<T>) => void
 }) {
   const [visible, setVisible] = useState<boolean>(false)
-  const [visibleStyle] = useVisibleStyle(visible)
+  const fadeStyle = useFadeStyle(visible)
   const targetRef = useRef<HTMLDivElement>(null)
   const visibleRef = useRef<boolean>(visible)
   const currOpts = options || []
@@ -57,7 +57,7 @@ export default function Select<T>({
     >
       {children}
       {currOpts.length > 0 && (
-        <div className={styles.opts} style={visibleStyle}>
+        <div className={styles.opts} style={fadeStyle}>
           {currOpts.map((item, index) => (
             <div
               key={index}

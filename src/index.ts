@@ -6,7 +6,7 @@
 
 export { default } from './doc'
 
-export { useDoc } from './store'
+export { useDocData } from './store'
 
 export type { LinkImage } from './com/link-image-render'
 

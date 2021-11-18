@@ -1,7 +1,3 @@
-// small 768 200, 72, 496 768_1023
-// normal 1024 200, 72, 752 1024_1535
-// large 1536 200, 72, 1264 1536_???
-
 :root {
   --doc-c1: rgba(0,0,0,.1);
   --doc-c2: rgba(0,0,0,.2);
@@ -9,102 +5,32 @@
   --doc-c4: rgba(0,0,0,.4);
   --doc-c5: rgba(0,0,0,.6);
   --doc-c6: rgba(0,0,0,.8);
-  --doc-c7: #000;
-  --doc-c8: #fff;
-  --doc-c9: #f0f2f4;
-  --doc-c10: #e3e6e9;
-  --doc-c11: #999;
-  --doc-c12: #0084FF;
+  --doc-c8: rgb(255,255,255);
+  --doc-c9: rgba(244,248,252,.8);
+  --doc-c10: rgb(227,230,233);
+  --doc-c11: rgb(153,153,153);
+  --doc-c12: rgba(0,127,255,.8);
 }
-
 .wrapper {
   width: 100%;
   height: 100%;
-  max-width: 100vw;
-  max-height: 100vh;
   position: relative;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--doc-c6);
   background-color: var(--doc-c10);
-  &.small {
-    .side {
-      width: calc(50% - 136px);
-      padding-left: calc(50% - 360px);
-    }
-    .main {
-      min-width: 768px;
-      padding-right: calc(50% - 360px);
-      padding-left: calc(50% - 136px);
-    }
-  }
-  &.large {
-    .side {
-      width: calc(50% - 520px);
-      padding-left: calc(50% - 744px);
-    }
-    .main {
-      min-width: 1536px;
-      padding-right: calc(50% - 744px);
-      padding-left: calc(50% - 520px);
-    }
-  }
-  &.phone {
-    .menu {
-      position: absolute;
-      width: 50px;
-      height: 28px;
-      left: 16px;
-      top: 40px;
-      z-index: 1;
-      border-radius: 5px;
-      background-color: var(--doc-c8);
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-      box-shadow: 0 2px 6px 0 var(--doc-c1);
-    }
-    .mask {
-      background-color: var(--doc-c5);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1000;
-    }
-    .side {
-      z-index: 1001;
-      width: 80%;
-      min-width: 260px;
-      max-width: 360px;
-      padding-right: 16px;
-      padding-left: 16px;
-      background-color: var(--doc-c10);
-    }
-    .main {
-      width: 100%;
-      min-width: unset;
-      padding-right: 16px;
-      padding-left: 16px;
-    }
-  }
+  position: fixed;
+  left: 0;
+  bottom: 0;top: 0;bottom: 0;
 }
 .side {
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
-  width: calc(50% - 264px);
   height: 100%;
-  min-width: 248px;
   padding-top: 100px;
-  padding-right: 24px;
   padding-bottom: 100px;
-  padding-left: calc(50% - 488px);
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
@@ -119,15 +45,94 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-width: 1024px;
   padding-top: 100px;
-  padding-right: calc(50% - 488px);
   padding-bottom: 100px;
-  padding-left: calc(50% - 264px);
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
   font-size: 14px;
   line-height: 20px;
   color: var(--doc-c6);
+}
+.phone {
+  .side {
+    z-index: 1001;
+    min-width: 258px;
+    max-width: 360px;
+    background-color: var(--doc-c10);
+  }
+  .menu {
+    position: absolute;
+    width: 50px;
+    height: 28px;
+    left: 16px;
+    top: 40px;
+    z-index: 1;
+    border-radius: 5px;
+    background-color: var(--doc-c8);
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 2px 6px 0 var(--doc-c1);
+  }
+  .mask {
+    background-color: var(--doc-c5);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+  }
+}
+.wrapper {
+  min-width: 1650px;
+  .side {
+    width: calc(50% - 475px);
+    padding-left: calc(50% - 725px);
+    padding-right: 24px;
+  }
+  .main {
+    padding-left: calc(50% - 475px);
+    padding-right: calc(50% - 725px);
+  }
+}
+.wrapper.middle {
+  min-width: 1150px;
+  .side {
+    width: 350px;
+    padding-left: 100px;
+    padding-right: 24px;
+  }
+  .main {
+    padding-left: 350px;
+    padding-right: 100px;
+  }
+}
+.wrapper.small {
+  min-width: 898px;
+  .side {
+    width: 274px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .main {
+    padding-left: 274px;
+    padding-right: 24px;
+  }
+}
+.wrapper.phone {
+  min-width: 360px;
+  .side {
+    width: 258px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .main {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import styles from './avatar-line.scss'
-import { useDoc } from '../store'
+import { useDocData } from '../store'
 import LinkImageRender from '../com/link-image-render'
 
 export default function AvatarLine({
@@ -9,7 +9,7 @@ export default function AvatarLine({
 }: {
   className?: string
 }) {
-  const { avatar, logos } = useDoc()
+  const { avatar, logos } = useDocData()
   return (
     <div className={cn(styles.wrapper, className)}>
       <LinkImageRender className={styles.avatar} data={avatar} />

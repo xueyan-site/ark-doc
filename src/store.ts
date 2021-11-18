@@ -41,15 +41,11 @@ interface DecCommonData {
   /**
    * side contents label
    */
-  sideContents?: React.ReactNode
+  contentsLabel?: React.ReactNode
   /**
    * side information label
    */
-  sideMessages?: React.ReactNode
-  /**
-   * side footer
-   */
-  children?: React.ReactNode
+  messagesLabel?: React.ReactNode
 }
 
 /**
@@ -124,7 +120,7 @@ export interface DocData extends DecCommonData {
 /**
  * page data hook
  */
-export function useDoc() {
+export function useDocData() {
   return useData<DocData>(DOC_STORE_KEY)
 }
 
@@ -145,15 +141,14 @@ function configToData(config: DocConfig): DocData {
     version: config.version,
     description: config.description,
     avatar: config.avatar,
-    sideContents: config.sideContents,
-    sideMessages: config.sideMessages,
-    children: config.children,
-    language: config.language || '中文',
+    language: config.language || 'English',
     logos: config.logos || [],
     versions: config.versions || [],
     languages: config.languages || [],
     contents: cts.articles,
+    contentsLabel: config.contentsLabel,
     messages: msg.articles,
+    messagesLabel: config.messagesLabel,
     article,
     sideTab: cts.article
       ? SIDE_TAB_TYPE.CONTENTS

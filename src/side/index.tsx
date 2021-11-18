@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import AvatarLine from './avatar-line'
 import styles from './index.scss'
 import Tag from '../com/tag'
 import Switch from '../com/switch'
 import Contents from '../com/contents'
 import { SIDE_CONTENTS_KEY_PREFIX, SIDE_MESSAGES_KEY_PREFIX, SIDE_TAB_KEY_PREFIX, SIDE_TAB_TYPE } from '../constants'
-import { useDoc } from '../store'
+import { useDocData } from '../store'
 import useMemory from '../utl/use-memory'
 import type { Article } from '../com/contents'
 import type { DocData } from '../store'
@@ -13,27 +13,19 @@ import type { DocData } from '../store'
 export default function Side({
   style,
   className,
-  onChange
+  onChange,
+  children
 }: {
   style?: React.CSSProperties
   className?: string
   onChange?: (node: Article, doc: DocData) => void
+  children?: React.ReactNode
 }) {
-  const doc = useDoc()
+  const doc = useDocData()
   const [tabKey, setTabKey] = useMemory<SIDE_TAB_TYPE|undefined>(
     SIDE_TAB_KEY_PREFIX + doc.id,
     cache => (doc.sideTab || cache || SIDE_TAB_TYPE.CONTENTS)
   )
-  const tabOptions = useMemo(() => ([
-    {
-      value: SIDE_TAB_TYPE.CONTENTS,
-      label: doc.sideContents || '目录'
-    },
-    {
-      value: SIDE_TAB_TYPE.MESSAGES,
-      label: doc.sideMessages || '信息'
-    }
-  ]), [doc.sideContents, doc.sideMessages])
 
   const handleChange = onChange && ((node: Article) => onChange(node, doc))
   
@@ -53,11 +45,25 @@ export default function Side({
       </div>
       <Switch
         className={styles.tab}
-        options={tabOptions}
         value={tabKey}
         active={doc.sideTab}
         onChange={key => setTabKey(key)}
+        options={[
+          {
+            value: SIDE_TAB_TYPE.CONTENTS,
+            label: doc.contentsLabel || 'contents'
+          },
+          {
+            value: SIDE_TAB_TYPE.MESSAGES,
+            label: doc.messagesLabel || 'messages'
+          }
+        ]}
       />
+      {tabKey === SIDE_TAB_TYPE.MESSAGES && doc.description && (
+        <div className={styles.desc}>
+          {doc.description}
+        </div>
+      )}
       <Contents
         className={styles.contents}
         article={doc.article}
@@ -66,13 +72,7 @@ export default function Side({
         onChange={handleChange}
         hidden={tabKey !== SIDE_TAB_TYPE.CONTENTS}
       />
-      {tabKey === SIDE_TAB_TYPE.MESSAGES && doc.description && (
-        <div className={styles.desc}>
-          {doc.description}
-        </div>
-      )}
       <Contents
-        size="large"
         className={styles.messages}
         article={doc.article}
         articles={doc.messages}
@@ -80,7 +80,7 @@ export default function Side({
         onChange={handleChange}
         hidden={tabKey !== SIDE_TAB_TYPE.MESSAGES}
       />
-      <div className={styles.footer}>{doc.children}</div>
+      {children}
     </aside>
   )
 }

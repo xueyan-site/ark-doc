@@ -661,10 +661,10 @@ xtend@^4.0.0, xtend@^4.0.1:
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
-xueyan-react-markdown@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/xueyan-react-markdown/-/xueyan-react-markdown-2.0.3.tgz#0d0dfda7d8e5e2b1584ae16c55ce9d09644dd3b8"
-  integrity sha512-5B0XNAjfOMJAwSwwD0HZsiyHtTAsAEKG7yDYqDil8CmK21b2K4OFHjQTgL5088im87iBuPgy3Hc3DoQCiOOWdg==
+xueyan-react-markdown@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/xueyan-react-markdown/-/xueyan-react-markdown-2.0.4.tgz#3c585350332c0af9fa6c987981873868e0dabf3c"
+  integrity sha512-9eGrO9ZfCoLmCk9deqm4MFTldtj4B69bR1Oi479Y/1R2hPnJJuSzkr3oWsIFqLOjUSIczXJknJZlwlS7Ysu/Ug==
   dependencies:
     "@babel/runtime" "^7.12.0"
     react-markdown "^5.0.3"
