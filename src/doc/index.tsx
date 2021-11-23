@@ -61,7 +61,8 @@ export default function Doc({
         ref={domRef}
         style={{
           ...style,
-          maxHeight
+          height: style?.height || maxHeight,
+          maxHeight,
         }}
         className={cn(
           styles.wrapper,

@@ -1,16 +1,16 @@
 {
   "name": "xueyan-react-doc",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "author": "xueyan-site <yang@xueyan.site>",
   "license": "MIT",
-  "description": "React Document Config Component",
+  "description": "react document renderer",
   "main": "dist/node",
   "types": "dist/def",
   "module": "dist/web",
   "keywords": [
-    "react",
     "document",
     "component",
+    "react",
     "xueyan",
     "typescript"
   ],
@@ -23,10 +23,7 @@
   ],
   "scripts": {
     "start": "xt start",
-    "build": "xt build",
-    "start-doc": "xt start doc",
-    "build-doc": "xt build doc",
-    "serve-doc": "xt serve doc"
+    "build": "xt build"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.0",

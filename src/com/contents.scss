@@ -3,11 +3,13 @@
   flex-flow: row nowrap;
   font-size: 14px;
   line-height: 20px;
+  padding: 2px 0;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   &.active {
     .nodeLabel {
-      color: var(--doc-c12);
+      color: var(--doc-c7);
+      font-weight: bold;
     }
   }
 }

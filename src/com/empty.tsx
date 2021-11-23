@@ -6,7 +6,7 @@ import EmptyIcon from '../ast/empty'
 export default function Empty(style: Pick<React.CSSProperties, 'width'|'height'>) {
   return (
     <Block className={styles.wrapper} style={style}>
-      <EmptyIcon width="50" height="50" fill="#666" />
+      <EmptyIcon width="50" height="50" fill="rgba(0,0,0,.3)" />
     </Block>
   )
 }

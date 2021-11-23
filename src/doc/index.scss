@@ -5,11 +5,11 @@
   --doc-c4: rgba(0,0,0,.4);
   --doc-c5: rgba(0,0,0,.6);
   --doc-c6: rgba(0,0,0,.8);
+  --doc-c7: rgb(88,86,214);
   --doc-c8: rgb(255,255,255);
   --doc-c9: rgba(244,248,252,.8);
   --doc-c10: rgb(227,230,233);
   --doc-c11: rgb(153,153,153);
-  --doc-c12: rgba(0,127,255,.8);
 }
 .wrapper {
   width: 100%;
@@ -19,9 +19,6 @@
   line-height: 1.5;
   color: var(--doc-c6);
   background-color: var(--doc-c10);
-  position: fixed;
-  left: 0;
-  bottom: 0;top: 0;bottom: 0;
 }
 .side {
   position: absolute;

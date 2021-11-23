@@ -32,9 +32,9 @@
     }
   }
   &:hover {
-    color: var(--doc-c12);
+    color: var(--doc-c7);
     .active::after {
-      background-color: var(--doc-c12);
+      background-color: var(--doc-c7);
     }
   }
   &.current {
@@ -42,7 +42,7 @@
     background-color: var(--doc-c8);
     box-shadow: 0 0 4px var(--doc-c1);
     .active::after {
-      background-color: var(--doc-c12);
+      background-color: var(--doc-c7);
     }
   }
 }

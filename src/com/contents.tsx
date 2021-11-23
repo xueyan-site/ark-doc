@@ -138,21 +138,23 @@ function Node({
   onChange: (event: React.MouseEvent<HTMLElement, MouseEvent>, node: Article) => void
 }) {
   const level = node.parents.length
-  const isActive = breadcrumb[level] === node
+  const isShrink = shrinks[node.id]
   const hasChildren = node.children.length > 0
-  const isShrinks = shrinks[node.id]
+  const isActive = breadcrumb[level] === node
+  const isCurrent = breadcrumb[breadcrumb.length - 1] === node
+
   return (
     <Fragment>
       <div
         className={cn(styles.node, {
-          [styles.active]: isActive
+          [styles.active]: isActive && (isCurrent || (!isCurrent && isShrink))
         })}
         style={{ paddingLeft: level * 12 }}
         onClick={event => onShrink(event, node)}
       >
         <img 
           className={styles.nodeIcon}
-          src={hasChildren ? isShrinks ? ADD_IMG : MINUS_IMG : (node.src || POINT_IMG)}
+          src={hasChildren ? isShrink ? ADD_IMG : MINUS_IMG : (node.src || POINT_IMG)}
         />
         <LinkTextRender
           className={styles.nodeLabel}
@@ -161,7 +163,7 @@ function Node({
           onClick={event => onChange(event, node)}
         />
       </div>
-      {(hasChildren && !isShrinks) ? node.children.map(item => (
+      {(hasChildren && !isShrink) ? node.children.map(item => (
         <Node
           key={item.id}
           node={item}
