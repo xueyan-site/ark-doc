@@ -1,17 +1,17 @@
 {
   "name": "xueyan-react-doc",
-  "version": "1.1.5",
-  "author": "xueyan-site <yang@xueyan.site>",
-  "license": "MIT",
-  "description": "react document renderer",
+  "version": "2.0.0",
+  "author": "xueyan-site <xueyan@xueyan.site>",
+  "license": "LGPL-3.0",
+  "description": "react document component",
   "main": "dist/node",
   "types": "dist/def",
   "module": "dist/web",
   "keywords": [
-    "document",
-    "component",
+    "doc",
     "react",
     "xueyan",
+    "component",
     "typescript"
   ],
   "repository": {
@@ -27,7 +27,14 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.0",
-    "xueyan-react-store": "^2.0.6"
+    "xueyan-react-contents": "^1.0.4",
+    "xueyan-react-drawer": "^1.0.2",
+    "xueyan-react-icon": "^1.1.2",
+    "xueyan-react-link": "^1.0.3",
+    "xueyan-react-select": "^1.2.0",
+    "xueyan-react-store": "^2.2.0",
+    "xueyan-react-style": "^2.0.2",
+    "xueyan-react-transition": "^1.0.9"
   },
   "peerDependencies": {
     "classnames": "^2.3.0",

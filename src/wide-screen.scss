@@ -1,0 +1,69 @@
+.xrdocwidescreen {
+  width: 100%;
+  height: 100%;
+  .side {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .main {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  &.large {
+    min-width: 1600px;
+    .side {
+      width: calc(50% - 424px);
+      padding-left: calc(50% - 700px);
+      padding-right: 24px;
+    }
+    .main {
+      padding-left: calc(50% - 424px);
+      padding-right: calc(50% - 700px);
+    }
+  }
+  &.normal {
+    min-width: 1200px;
+    .side {
+      width: 376px;
+      padding-left: 100px;
+      padding-right: 24px;
+    }
+    .main {
+      padding-left: 376px;
+      padding-right: 100px;
+    }
+  }
+  &.middle {
+    min-width: 1048px;
+    .side {
+      width: calc(50% - 224px);
+      padding-left: calc(50% - 500px);
+      padding-right: 24px;
+    }
+    .main {
+      padding-left: calc(50% - 224px);
+      padding-right: calc(50% - 500px);
+    }
+  }
+  &.small {
+    min-width: 900px;
+    .side {
+      width: 300px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .main {
+      padding-left: 300px;
+      padding-right: 24px;
+    }
+  }
+}

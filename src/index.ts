@@ -1,19 +1,16 @@
-/**
- * @package xueyan-react-doc
- * @author xueyan-site <yang@xueyan.site>
- * @description package entry
- */
+import 'xueyan-react-style'
 
-export { default } from './doc'
+export { Doc } from './doc'
+export { useDocData, useDocStore } from './store'
 
-export { useDocData } from './store'
-
-export type { LinkImage } from './com/link-image-render'
-
-export type { LinkText } from './com/link-text-render'
-
-export type { Article, ArticleMeta } from './com/contents'
-
-export type { DocStore, DocData, DocConfig } from './store'
-
-export type { DocProps } from './doc'
+export type { DocProps, DocRef } from './doc'
+export type { DocData, DocStore } from './store'
+export type {
+  ImageLinkProps,
+  DocConfig,
+  DocumentInfo,
+  DocumentInfoStruct,
+  DocOnChange,
+  DocOnChangeVersion,
+  DocOnChangeLanguage,
+} from './types'

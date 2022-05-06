@@ -7,26 +7,26 @@ import type { DocumentInfo } from 'xueyan-react-doc'
 const DOCUMENTS: DocumentInfo<string,string>[] = [
   {
     value: '1',
-    label: '文档集一',
+    label: 'document first',
     contents: [
       {
         value: '1-1',
-        label: '第一篇',
+        label: 'chapter one',
         content: () => import('./intro')
       },
       {
         value: '1-2',
-        label: '第二篇',
+        label: 'chapter two',
         content: () => import('./intro'),
         children: [
           {
             value: '1-2-1',
-            label: '第一章',
+            label: 'part one',
             content: () => import('./intro')
           },
           {
             value: '1-2-2',
-            label: '第二章',
+            label: 'part two',
             content: () => import('./intro'),
           }
         ]
@@ -35,16 +35,16 @@ const DOCUMENTS: DocumentInfo<string,string>[] = [
   },
   {
     value: '2',
-    label: '文档集二',
+    label: 'document second',
     contents: [
       {
         value: '2-1',
-        label: '第一篇',
+        label: 'chapter one',
         content: () => import('./intro')
       },
       {
         value: '2-2',
-        label: '第二篇',
+        label: 'chapter two',
         content: () => import('./intro')
       }
     ]
@@ -55,7 +55,7 @@ export default function Index(props: PageProps) {
   return (
     <PageDoc 
       {...props}
-      language="zh"
+      language="en"
       name={pkg.name}
       version={pkg.version}
       documents={DOCUMENTS}

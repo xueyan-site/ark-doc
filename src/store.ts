@@ -1,181 +1,122 @@
-import React from 'react'
-import Store, { createProvider, useData, useStore } from 'xueyan-react-store'
-import { SIDE_TAB_TYPE, DOC_STORE_KEY } from './constants'
-import { parseArticles } from './com/contents'
-import type { LinkText } from './com/link-text-render'
-import type { LinkImage } from './com/link-image-render'
-import type { Article, ArticleMeta } from './com/contents'
+import { Store, createProvider, useData, useStore } from 'xueyan-react-store'
+import { parseContentsOptions } from 'xueyan-react-contents'
+import type { SelectOption } from 'xueyan-react-select'
+import type { ContentsProOption } from 'xueyan-react-contents'
+import type { DocumentInfoStruct, ImageLinkProps, DocConfig } from './types'
 
-/**
- * 模块
- */
-export interface ESModule {
-  default: any
-}
-
-export interface AnyObject<T = any> {
-  [id: string]: T | undefined
-}
-
-interface DecCommonData {
-  /**
-   * project id
-   */
-  id: string
-  /**
-   * project name
-   */
-  name: React.ReactNode
-  /**
-   * current version
-   */
-  version: string
-  /**
-   * project description
-   */
+export interface DocData<T,D> {
+  /** 已选值 */
+  value: T;
+  /** 当前内容 */
+  option: ContentsProOption<T>
+  /** 当前文档 */
+  document: DocumentInfoStruct<T,D>
+  /** 文档合集 */
+  documents: DocumentInfoStruct<T,D>[]
+  /** 目录名 */
+  name: string;
+  /** 文档描述 */
   description: React.ReactNode
-  /**
-   * avatar description object
-   */
-  avatar: LinkImage
-  /**
-   * side contents label
-   */
-  contentsLabel?: React.ReactNode
-  /**
-   * side information label
-   */
-  messagesLabel?: React.ReactNode
-}
-
-/**
- * doc config
- */
-export interface DocConfig extends DecCommonData {
-  /**
-   * current language
-   */
-  language?: string
-  /**
-   * logo description objects
-   */
-  logos?: LinkImage[]
-  /**
-   * version options
-   */
-  versions?: LinkText[]
-  /**
-   * language options
-   */
-  languages?: LinkText[]
-  /**
-   * contents
-   */
-  contents?: ArticleMeta[]
-  /**
-   * messages
-   */
-  messages?: ArticleMeta[]
-  /**
-   * article id
-   */
-  article?: string
-}
-
-export interface DocData extends DecCommonData {
-  /**
-   * current language
-   */
+  /** 文档主图标 */
+  icon: ImageLinkProps
+  /** 其余图标列表 */
+  icons: ImageLinkProps[]
+  /** 当前版本 */
+  version: string
+  /** 版本列表 */
+  versions: SelectOption<string>[]
+  /** 当前语言 */
   language: string
-  /**
-   * logo description objects
-   */
-  logos: LinkImage[]
-  /**
-   * version options
-   */
-  versions: LinkText[]
-  /**
-   * language options
-   */
-  languages: LinkText[]
-  /**
-   * contents
-   */
-  contents: Article[]
-  /**
-   * messages
-   */
-  messages: Article[]
-  /**
-   * current article information
-   */
-  article?: Article
-  /**
-   * side switch active key
-   */
-  sideTab?: SIDE_TAB_TYPE
+  /** 语言列表 */
+  languages: SelectOption<string>[]
 }
 
-/**
- * page data hook
- */
-export function useDocData() {
-  return useData<DocData>(DOC_STORE_KEY)
+const STORE_KEY = 'xrdocdata'
+
+export function useDocData<T,D>() {
+  return useData<DocData<T,D>>(STORE_KEY)
 }
 
-/**
- * page data hook
- */
-export function useDocStore() {
-  return useStore<DocStore>(DOC_STORE_KEY)
+export function useDocStore<T,D>() {
+  return useStore<DocStore<T,D>>(STORE_KEY)
 }
 
-function configToData(config: DocConfig): DocData {
-  const cts = parseArticles(config.article, config.contents || [])
-  const msg = parseArticles(config.article, config.messages || [])
-  const article = cts.article || msg.article
+export function parseDocuments<T,D>(
+  documents: DocConfig<T,D>['documents']
+): DocumentInfoStruct<T,D>[] {
+  return (documents || []).map(item => ({
+    ...item, 
+    contents: parseContentsOptions<T>(item.contents)
+  }))
+}
+
+export function parseValue<T,D>(
+  documents: DocumentInfoStruct<T,D>[],
+  value: DocConfig<T,D>['value']
+): {
+  value: T
+  option: ContentsProOption<T>
+  document: DocumentInfoStruct<T,D>
+} {
+  let option: ContentsProOption<T> | undefined
+  let document: DocumentInfoStruct<T,D> | undefined
+  if (value !== undefined) {
+    for (let i = 0; i < documents.length; i++) {
+      const doc = documents[i]
+      const opt = doc.contents.map.get(value)
+      if (opt) {
+        option = opt
+        document = doc
+        break
+      }
+    }
+  }
+  if (!option || !document) {
+    for (let i = 0; i < documents.length; i++) {
+      const doc = documents[i]
+      const opt = doc.contents.leafs[0]
+      if (opt) {
+        option = opt
+        document = doc
+        break
+      }
+    }
+  }
+  if (!option || !document) {
+    throw Error('Please ensure that content exists')
+  }
   return {
-    id: config.id,
-    name: config.name,
-    version: config.version,
-    description: config.description,
-    avatar: config.avatar,
-    language: config.language || 'English',
-    logos: config.logos || [],
-    versions: config.versions || [],
-    languages: config.languages || [],
-    contents: cts.articles,
-    contentsLabel: config.contentsLabel,
-    messages: msg.articles,
-    messagesLabel: config.messagesLabel,
-    article,
-    sideTab: cts.article
-      ? SIDE_TAB_TYPE.CONTENTS
-      : msg.article
-      ? SIDE_TAB_TYPE.MESSAGES
-      : undefined,
+    value: option.value,
+    option,
+    document
   }
 }
 
-export const DocProvider = createProvider((props: { data: DocConfig }) => {
-  return new DocStore(configToData(props.data), props.data)
+function parseProps<T,D>(props: DocConfig<T,D>): DocData<T,D> {
+  const documents = parseDocuments<T,D>(props.documents)
+  const { value, option, document } = parseValue<T,D>(documents, props.value)
+  return {
+    value,
+    option,
+    document,
+    documents,
+    name: props.name,
+    description: props.description,
+    icon: props.icon,
+    icons: props.icons || [],
+    version: props.version,
+    versions: props.versions || [],
+    language: props.language,
+    languages: props.languages || [],
+  }
+}
+
+export const DocProvider = createProvider((props: DocConfig<any, any>) => {
+  return new DocStore(parseProps(props))
 })
 
-/**
- * doc store
- */
-export class DocStore extends Store<DocData> {
-  private config: DocConfig
-
-  constructor(defaultData: DocData, config: DocConfig) {
-    super(DOC_STORE_KEY, defaultData)
-    this.config = config
-  }
-
-  mergeConfig(config: Partial<DocConfig>) {
-    return configToData(
-      Object.assign({}, this.config, config)
-    )
+export class DocStore<T,D> extends Store<DocData<T,D>> {
+  constructor(defaultData: DocData<T,D>) {
+    super(STORE_KEY, defaultData)
   }
 }

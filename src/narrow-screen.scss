@@ -1,0 +1,36 @@
+.xrdocnarrowscreen {
+  width: 100%;
+  height: 100%;
+  .side {
+    width: 284px;
+    height: 100%;
+    padding: 100px 16px;
+    box-sizing: border-box;
+  }
+  .main {
+    width: 100%;
+    height: 100%;
+    padding: 100px 16px;
+    box-sizing: border-box;
+  }
+  .menu {
+    position: absolute;
+    height: 32px;
+    padding: 0 8px;
+    left: 16px;
+    top: 36px;
+    z-index: 1;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--base1);
+    border: 1px solid var(--area2);
+    border-radius: 4px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    &:hover {
+      border-color: var(--area3);
+    }
+  }
+}

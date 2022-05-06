@@ -1,0 +1,20 @@
+.xrdocmain {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .title {
+    margin: 0 0 16px;
+    line-height: 1.25;
+    font-weight: 600;
+    font-size: 32px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid var(--area2);
+  }
+  .banner {
+    display: block;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    width: auto;
+    max-width: 100%;
+  }  
+}

@@ -1,22 +1,13 @@
-const pkg = require('../package.json')
-
 module.exports = {
   type: 'react-csr',
   index: 'zh',
   track: false,
-  path: pkg.name,
-  serve: {
-    port: 10002
-  },
-  start: {
-    port: 15002
-  },
   alias: {
-    src: 'src',
     ast: 'pub/ast',
     com: 'pub/com',
     utl: 'pub/utl',
-    'xueyan-react-doc': '../src'
+    'xueyan-react-doc': '../src',
+    'xueyan-react-style': '../node_modules/xueyan-react-style'
   },
   module: {
     externals: {
@@ -54,14 +45,14 @@ module.exports = {
     ],
     styles: [
       {
-        key: 'global',
-        rel: 'stylesheet',
-        href: '{{XT_PATH}}index.css'
-      },
-      {
         key: 'normalize',
         rel: 'stylesheet',
         href: 'https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css'
+      },
+      {
+        key: 'global',
+        rel: 'stylesheet',
+        href: '{{XT_PATH}}global.css'
       }
     ],
     scripts: [

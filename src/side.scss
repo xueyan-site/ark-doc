@@ -1,0 +1,58 @@
+.xrdocside {
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0;
+    display: none;
+  }
+  .icons {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-end;
+    .mainicon {
+      width: 100px;
+      height: 100px;
+    }
+    .subicon {
+      width: 40px;
+      height: 40px;
+      margin-left: 16px;
+    }
+  }
+  .name {
+    margin: 16px 0 0;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .desc {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+  .selects {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 16px;
+    .version {
+      width: 96px;
+    }
+    .language {
+      flex: 1;
+      margin-left: 8px;
+    }
+  }
+  .switchtheme {
+    margin-top: 8px;
+  }
+  .document {
+    margin-top: 16px;
+    border: none;
+  }
+  .contents {
+    margin-top: 16px;
+  }
+  .footer {
+    margin-top: 16px;
+  }
+}
