@@ -39,6 +39,7 @@ export function NarrowScreen<T,D>({
       </Drawer>
       <Main 
         className={styles.main}
+        onChange={onChange}
         header={
           <div
             className={styles.menu}

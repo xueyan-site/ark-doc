@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { DocProvider } from './store'
 import { WideScreen } from './wide-screen'
 import { NarrowScreen } from './narrow-screen'
-import { useDomRect, useWindowRect } from './hooks'
+import { useDomRect } from './hooks'
 import { DocConfig, DocOnChange, DocOnChangeLanguage, DocOnChangeVersion } from './types'
 import styles from './doc.scss'
 
@@ -36,7 +36,6 @@ export const Doc = forwardRef<DocRef, DocProps<any, any>>(({
   onChangeLanguage,
   ...props
 }, ref) => {
-  const [_width, height] = useWindowRect()
   const [rootRef, width] = useDomRect<HTMLDivElement>()
 
   useImperativeHandle(ref, () => ({
@@ -47,12 +46,8 @@ export const Doc = forwardRef<DocRef, DocProps<any, any>>(({
     <DocProvider {...props}>
       <div 
         ref={rootRef} 
+        style={style}
         className={cn(className, styles.xrdoc)} 
-        style={{
-          ...style,
-          height: style?.height || height,
-          maxHeight: height,
-        }}
       >
         {width >= 900 ? (
           <WideScreen 

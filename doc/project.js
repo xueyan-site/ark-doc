@@ -1,20 +1,23 @@
 module.exports = {
   type: 'react-csr',
   index: 'zh',
-  track: false,
+  path: 'xueyan-react-doc',
   alias: {
-    ast: 'pub/ast',
-    com: 'pub/com',
-    utl: 'pub/utl',
+    'ast': 'pub/ast',
+    'com': 'pub/com',
+    'utl': 'pub/utl',
     'xueyan-react-doc': '../src',
     'xueyan-react-style': '../node_modules/xueyan-react-style'
   },
+  serve: {
+    port: 12001
+  },
   module: {
     externals: {
-      react: 'React',
+      'react': 'React',
       'react-dom': 'ReactDOM',
-      classnames: 'classNames',
-      lodash: '_'
+      'classnames': 'classNames',
+      'lodash': '_'
     },
     rules: {
       raw: {
@@ -47,7 +50,7 @@ module.exports = {
       {
         key: 'normalize',
         rel: 'stylesheet',
-        href: 'https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css'
+        href: 'https://xueyan.site/normalize.css'
       },
       {
         key: 'global',

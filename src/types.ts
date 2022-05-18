@@ -5,11 +5,11 @@ import type { DocData } from './store'
 
 export type ImageLinkProps = Omit<LinkProps, 'children'>
 
-export interface DocumentInfo<T,D> extends SelectOption<D> {
+export interface Collection<T,D> extends SelectOption<D> {
   contents: ContentsOption<T>[]
 }
 
-export interface DocumentInfoStruct<T,D> extends SelectOption<D> {
+export interface CollectionStruct<T,D> extends SelectOption<D> {
   contents: ContentsOptionStruct<T>
 }
 
@@ -35,7 +35,7 @@ export interface DocConfig<T,D> {
   /** 已选值 */
   value?: T;
   /** 文档列表 */
-  documents?: DocumentInfo<T,D>[]
+  collections?: Collection<T,D>[]
   /** 目录名 */
   name: string;
   /** 文档描述 */

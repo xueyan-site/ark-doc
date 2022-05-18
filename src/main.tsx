@@ -5,6 +5,8 @@ import { Empty } from './empty'
 import { Failed } from './failed'
 import { Loading } from './loading'
 import { useDocData } from './store'
+import { PageTurner } from './page-turner'
+import type { DocProps } from './doc'
 
 enum STATUS {
   INIT = 0,
@@ -13,14 +15,20 @@ enum STATUS {
   FAILED = -1
 }
 
-export function Main({
-  className,
-  header,
-}: {
+interface MainProps<T,D> extends Pick<
+  DocProps<T,D>,
+  | 'onChange'
+> {
   className?: string
   header?: React.ReactNode
-}) {
-  const docData = useDocData()
+}
+
+export function Main<T,D>({
+  className,
+  header,
+  onChange
+}: MainProps<T,D>) {
+  const docData = useDocData<T,D>()
   const [status, setStatus] = useState<STATUS>(STATUS.INIT)
   const renderRef = useRef<React.ComponentType<any>|undefined>()
   const Render = renderRef.current
@@ -41,7 +49,7 @@ export function Main({
       setStatus(STATUS.SUCCESS)
     }
   }, [option])
-
+  
   return (
     <div className={cn(styles.xrdocmain, className)}>
       {header}
@@ -49,13 +57,27 @@ export function Main({
       {option.banner && (
         <img className={styles.banner} src={option.banner} />
       )}
-      {status === STATUS.LOADING ? (
-        <Loading />
-      ) : status === STATUS.FAILED ? (
-        <Failed />
-      ) : status === STATUS.SUCCESS ? (
-        Render ? <Render /> : <Empty />
-      ) : null}
+      <div className={styles.content}>
+        {status === STATUS.LOADING ? (
+          <Loading />
+        ) : status === STATUS.FAILED ? (
+          <Failed />
+        ) : status === STATUS.SUCCESS ? (
+          Render ? <Render /> : <Empty />
+        ) : null}
+      </div>
+      <div className={styles.turners}>
+        <PageTurner
+          data={option.prev}
+          direction="left"
+          onChange={onChange}
+        />
+        <PageTurner
+          data={option.next}
+          direction="right"
+          onChange={onChange}
+        />
+      </div>
     </div>
   )
 }

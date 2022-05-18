@@ -6,24 +6,6 @@
   flex-direction: column;
   background-color: var(--base1);
   .button {
-    width: 80px;
-    height: 24px;
-    box-sizing: border-box;
-    color: var(--font);
-    border: 1px solid var(--area2);
-    background-color: var(--area1);
-    text-align: center;
-    font-size: 12px;
-    border-radius: 4px;
     margin-top: 16px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-    &:hover {
-      border-color: var(--area3);
-      background-color: var(--area2);
-    }
-    &:active {
-      background-color: var(--area1);
-    }
   }
 }

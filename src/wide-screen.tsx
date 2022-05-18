@@ -39,7 +39,10 @@ export function WideScreen<T,D>({
         onChangeVersion={onChangeVersion}
         onChangeLanguage={onChangeLanguage}
       >{children}</Side>
-      <Main className={styles.main}/>
+      <Main 
+        className={styles.main}
+        onChange={onChange}
+      />
     </div>
   )
 }

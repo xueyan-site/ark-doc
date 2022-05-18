@@ -4,17 +4,26 @@
   overflow-y: auto;
   .title {
     margin: 0 0 16px;
-    line-height: 1.25;
-    font-weight: 600;
+    padding: 0 0 9px;
     font-size: 32px;
-    padding-bottom: 9px;
+    font-weight: 600;
+    line-height: 1.25;
     border-bottom: 1px solid var(--area2);
   }
   .banner {
+    width: auto;
     display: block;
+    max-width: 100%;
     margin-bottom: 16px;
     border-radius: 16px;
-    width: auto;
-    max-width: 100%;
-  }  
+  }
+  .content {
+    margin-bottom: 16px;
+    min-height: 440px;
+  }
+  .turners {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 }

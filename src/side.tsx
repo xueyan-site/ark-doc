@@ -6,7 +6,7 @@ import { BoxSelect, Select } from 'xueyan-react-select'
 import { Contents } from 'xueyan-react-contents'
 import styles from './side.scss'
 import { useDocData } from './store'
-import { DocumentInfoStruct } from './types'
+import { CollectionStruct } from './types'
 import type { DocProps } from './doc'
 
 interface SideProps<T,D> extends Pick<
@@ -29,8 +29,8 @@ export function Side<T,D>({
   const docData = useDocData<T,D>()
   const { 
     value,
-    document,
-    documents,
+    collection,
+    collections,
     name, 
     description,
     icon, 
@@ -40,7 +40,7 @@ export function Side<T,D>({
     language,
     languages,
   } = docData
-  const [doc, setDoc] = useState<DocumentInfoStruct<T, D>>(document)
+  const [doc, setDoc] = useState<CollectionStruct<T, D>>(collection)
   return (
     <aside className={cn(styles.xrdocside, className)}>
       <div className={styles.icons}>
@@ -77,10 +77,10 @@ export function Side<T,D>({
       </div>
       <SwitchTheme className={styles.switchtheme}/>
       <BoxSelect 
-        className={styles.document}
+        className={styles.collection}
         vertical={true}
         value={doc.value}
-        options={documents}
+        options={collections}
         onChange={(_a, option: any) => {
           setDoc(option)
         }}

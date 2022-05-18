@@ -8,8 +8,8 @@ export type { DocData, DocStore } from './store'
 export type {
   ImageLinkProps,
   DocConfig,
-  DocumentInfo,
-  DocumentInfoStruct,
+  Collection,
+  CollectionStruct,
   DocOnChange,
   DocOnChangeVersion,
   DocOnChangeLanguage,

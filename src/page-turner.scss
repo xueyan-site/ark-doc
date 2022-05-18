@@ -1,0 +1,66 @@
+.xrdocpageturner {
+  height: 64px;
+  min-width: 280px;
+  max-width: 480px;
+  padding: 10px 16px 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  -webkit-tap-highlight-color: transparent;
+  color: var(--font);
+  border: 1px solid var(--area2);
+  background-color: var(--base1);
+  &:hover {
+    border-color: var(--area3);
+  }
+  &:active {
+    color: var(--font1);
+    border-color: var(--area1);
+  }
+  .arrow {
+    flex: none;
+    height: 44px;
+  }
+  .main {
+    flex: 1;
+    min-width: 0;
+    margin: 0 0 0 10px;
+  }
+  .label {
+    width: 100%;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .levels {
+    width: 100%;
+    color: var(--font1);
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    margin-top: 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .level + .level {
+    &::before {
+      content: '/';
+      padding: 0 6px;
+    }
+  }
+  &.right {
+    .main {
+      margin: 0 10px 0 0;
+    }
+    .label {
+      text-align: right;
+    }
+    .levels {
+      text-align: right;
+    }
+  }
+}
