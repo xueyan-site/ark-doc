@@ -23,7 +23,7 @@ export function PageTurner<T,D>({
 }: PageTurnerProps<T,D>) {
   const docData = useDocData<T,D>()
   if (!data) {
-    return null
+    return <div/>
   }
   const right = direction === 'right'
   const arrow = (
