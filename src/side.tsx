@@ -12,6 +12,7 @@ import type { DocProps } from './doc'
 interface SideProps<T,D> extends Pick<
   DocProps<T,D>, 
   | 'children'
+  | 'getHref'
   | 'onChange'
   | 'onChangeVersion'
   | 'onChangeLanguage'
@@ -22,16 +23,16 @@ interface SideProps<T,D> extends Pick<
 export function Side<T,D>({
   className,
   children,
+  getHref,
   onChange,
   onChangeVersion,
   onChangeLanguage
 }: SideProps<T,D>) {
   const docData = useDocData<T,D>()
-  const { 
+  const {
+    name,
     value,
-    collection,
     collections,
-    name, 
     description,
     icon, 
     icons, 
@@ -40,7 +41,9 @@ export function Side<T,D>({
     language,
     languages,
   } = docData
-  const [doc, setDoc] = useState<CollectionStruct<T, D>>(collection)
+  const [collection, setCollection] = useState<CollectionStruct<T, D>>(
+    docData.collection
+  )
   return (
     <aside className={cn(styles.xrdocside, className)}>
       <div className={styles.icons}>
@@ -79,16 +82,17 @@ export function Side<T,D>({
       <BoxSelect 
         className={styles.collection}
         vertical={true}
-        value={doc.value}
+        value={collection.value}
         options={collections}
         onChange={(_a, option: any) => {
-          setDoc(option)
+          setCollection(option)
         }}
       />
       <Contents
         className={styles.contents}
         value={value}
-        options={doc.contents}
+        options={collection.contents}
+        getHref={getHref}
         onChange={(value, option) => {
           if (onChange) {
             onChange(value, option, docData)

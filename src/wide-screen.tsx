@@ -8,6 +8,7 @@ import type { DocProps } from './doc'
 interface WideScreenProps<T,D> extends Pick<
   DocProps<T,D>, 
   | 'children'
+  | 'getHref'
   | 'onChange'
   | 'onChangeVersion'
   | 'onChangeLanguage'
@@ -18,6 +19,7 @@ interface WideScreenProps<T,D> extends Pick<
 export function WideScreen<T,D>({
   children,
   width,
+  getHref,
   onChange,
   onChangeVersion,
   onChangeLanguage
@@ -35,12 +37,14 @@ export function WideScreen<T,D>({
     )}>
       <Side 
         className={styles.side}
+        getHref={getHref}
         onChange={onChange}
         onChangeVersion={onChangeVersion}
         onChangeLanguage={onChangeLanguage}
       >{children}</Side>
       <Main 
         className={styles.main}
+        getHref={getHref}
         onChange={onChange}
       />
     </div>

@@ -1,9 +1,9 @@
 import type { ContentsOption, ContentsOptionStruct, ContentsProOption } from 'xueyan-react-contents'
-import type { LinkProps } from 'xueyan-react-link'
+import type { LabelLinkProps } from 'xueyan-react-link'
 import type { SelectOption } from 'xueyan-react-select'
 import type { DocData } from './store'
 
-export type ImageLinkProps = Omit<LinkProps, 'children'>
+export type ImageLinkProps = Omit<LabelLinkProps, 'children'>
 
 export interface Collection<T,D> extends SelectOption<D> {
   contents: ContentsOption<T>[]

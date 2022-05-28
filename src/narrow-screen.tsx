@@ -9,6 +9,7 @@ import type { DocProps } from './doc'
 interface NarrowScreenProps<T,D> extends Pick<
   DocProps<T,D>, 
   | 'children'
+  | 'getHref'
   | 'onChange'
   | 'onChangeVersion'
   | 'onChangeLanguage'
@@ -16,6 +17,7 @@ interface NarrowScreenProps<T,D> extends Pick<
 
 export function NarrowScreen<T,D>({
   children,
+  getHref,
   onChange,
   onChangeVersion,
   onChangeLanguage
@@ -30,6 +32,7 @@ export function NarrowScreen<T,D>({
       >
         <Side 
           className={styles.side}
+          getHref={getHref}
           onChange={onChange}
           onChangeVersion={onChangeVersion}
           onChangeLanguage={onChangeLanguage}
@@ -39,6 +42,7 @@ export function NarrowScreen<T,D>({
       </Drawer>
       <Main 
         className={styles.main}
+        getHref={getHref}
         onChange={onChange}
         header={
           <div

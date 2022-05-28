@@ -1,5 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from 'react'
 import cn from 'classnames'
+import { ContentsProps } from 'xueyan-react-contents'
 import { DocProvider } from './store'
 import { WideScreen } from './wide-screen'
 import { NarrowScreen } from './narrow-screen'
@@ -7,7 +8,10 @@ import { useDomRect } from './hooks'
 import { DocConfig, DocOnChange, DocOnChangeLanguage, DocOnChangeVersion } from './types'
 import styles from './doc.scss'
 
-export interface DocProps<T,D> extends DocConfig<T,D> {
+export interface DocProps<T,D> 
+  extends DocConfig<T,D>, 
+  Pick<ContentsProps<T>, 'getHref'> 
+{
   /** 类名 */
   className?: string
   /** 样式 */
@@ -31,6 +35,7 @@ export const Doc = forwardRef<DocRef, DocProps<any, any>>(({
   className,
   style,
   children,
+  getHref,
   onChange,
   onChangeVersion,
   onChangeLanguage,
@@ -52,17 +57,19 @@ export const Doc = forwardRef<DocRef, DocProps<any, any>>(({
         {width >= 900 ? (
           <WideScreen 
             width={width}
+            getHref={getHref}
             onChange={onChange}
             onChangeVersion={onChangeVersion}
             onChangeLanguage={onChangeLanguage}
           >{children}</WideScreen>
-        ) : (
+        ) : width >= 200 ? (
           <NarrowScreen
+            getHref={getHref}
             onChange={onChange}
             onChangeVersion={onChangeVersion}
             onChangeLanguage={onChangeLanguage}
           >{children}</NarrowScreen>
-        )}
+        ) : null}
       </div>
     </DocProvider>
   )

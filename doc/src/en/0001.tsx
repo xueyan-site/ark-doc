@@ -2,7 +2,8 @@ import React from 'react'
 import { Article, Segment } from 'xueyan-react-markdown'
 
 const MARK1 = `
-这是一段测试文本  
+Unfortunately, we have not yet provided you with English version.  
+If you are interested in translating this document, please submit merge request to us.
 `
 
 export default function Main() {

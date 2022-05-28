@@ -6,6 +6,7 @@ import { Failed } from './failed'
 import { Loading } from './loading'
 import { useDocData } from './store'
 import { PageTurner } from './page-turner'
+import type { ContentsProps } from 'xueyan-react-contents'
 import type { DocProps } from './doc'
 
 enum STATUS {
@@ -15,10 +16,10 @@ enum STATUS {
   FAILED = -1
 }
 
-interface MainProps<T,D> extends Pick<
-  DocProps<T,D>,
-  | 'onChange'
-> {
+interface MainProps<T,D> extends
+  Pick<DocProps<T,D>, 'onChange'>,
+  Pick<ContentsProps<T>, 'getHref'>
+{
   className?: string
   header?: React.ReactNode
 }
@@ -26,6 +27,7 @@ interface MainProps<T,D> extends Pick<
 export function Main<T,D>({
   className,
   header,
+  getHref,
   onChange
 }: MainProps<T,D>) {
   const docData = useDocData<T,D>()
@@ -70,11 +72,13 @@ export function Main<T,D>({
         <PageTurner
           data={option.prev}
           direction="left"
+          getHref={getHref}
           onChange={onChange}
         />
         <PageTurner
           data={option.next}
           direction="right"
+          getHref={getHref}
           onChange={onChange}
         />
       </div>

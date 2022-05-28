@@ -11,11 +11,11 @@ declare global {
   const XT_DEV: boolean
   /** project name, usually package.json.name, you can customize in project.js */
   const XT_NAME: string
-  /** package.json.author, e.g. author <doc@doc.doc> */
+  /** package.json.author, e.g. author <xxx@xxx.xxx> */
   const XT_AUTHOR: string
   /** project author, e.g. author */
   const XT_AUTHOR_NAME: string
-  /** project author, e.g. doc@doc.doc */
+  /** project author, e.g. xxx@xxx.xxx */
   const XT_AUTHOR_EMAIL: string
   /** package.json.version */
   const XT_VERSION: string
