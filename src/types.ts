@@ -32,9 +32,9 @@ export type DocOnChangeLanguage<T,D> = (
 ) => void
 
 export interface DocConfig<T,D> {
-  /** 已选值 */
+  /** 已选值（当前文章ID） */
   value?: T;
-  /** 文档列表 */
+  /** 文章集合列表 */
   collections?: Collection<T,D>[]
   /** 目录名 */
   name: string;
