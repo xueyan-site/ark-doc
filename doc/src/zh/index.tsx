@@ -30,6 +30,11 @@ const COLLECTIONS: Collection<string,string>[] = [
         value: '0001',
         label: '介绍',
         content: () => import('./0001')
+      },
+      {
+        value: '0004',
+        label: '示例',
+        content: () => import('./0004')
       }
     ]
   },

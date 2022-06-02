@@ -51,6 +51,20 @@ export function Main<T,D>({
       setStatus(STATUS.SUCCESS)
     }
   }, [option])
+
+  useEffect(() => {
+    if (!Render || !location.hash) {
+      return
+    }
+    const timer = requestAnimationFrame(() => {
+      const dom = document.createElement('a')
+      dom.href = location.hash
+      dom.click()
+    })
+    return () => {
+      cancelAnimationFrame(timer)
+    }
+  }, [Render])
   
   return (
     <div className={cn(styles.xrdocmain, className)}>

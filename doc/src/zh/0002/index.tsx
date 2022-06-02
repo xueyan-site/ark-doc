@@ -69,17 +69,26 @@ interface DocConfig<T,D> {
 type ImageLinkProps = Omit<LabelLinkProps, 'children'>
 \`\`\`
 
-LabelLinkProps 见 [xueyan-react-link](/xueyan-react-link)
+> 其他类型：[LabelLinkProps](/xueyan-react-link)
 
 ## Collection
 
 \`\`\`typescript
 interface Collection<T,D> extends SelectOption<D> {
-  contents: ContentsOption<T>[]
+  contents: CollectionContentsOption<T>[]
 }
 \`\`\`
 
-SelectOption 见 [xueyan-react-select](/xueyan-react-select)
+\`\`\`typescript
+interface CollectionContentsOption<T> extends ContentsOption<T> {
+  /** 文章顶部横幅 */
+  banner?: string
+  /** 文章内容，例如：() => import('./0001') */
+  content?: () => Promise<{ default: React.ComponentType }>
+}
+\`\`\`
+
+> 其他类型：[SelectOption](/xueyan-react-select)、[ContentsOption](/xueyan-react-contents)
 
 ## CollectionStruct
 
@@ -99,7 +108,7 @@ type DocOnChange<T,D> = (
 ) => void
 \`\`\`
 
-ContentsProOption 见 [xueyan-react-contents](/xueyan-react-contents)
+> 其他类型：[DocData](?doc=0003#docdata)、[ContentsProOption](/xueyan-react-contents)
 
 ## DocOnChangeVersion
 
