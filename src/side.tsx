@@ -44,52 +44,69 @@ export function Side<T,D>({
   const [collection, setCollection] = useState<CollectionStruct<T, D>>(
     docData.collection
   )
+  const showVersion = version || versions.length > 0
+  const showLanguage = language || languages.length > 0
+  const hideCollection = collections.length === 1 && !collections[0].label
   return (
     <aside className={cn(styles.xrdocside, className)}>
-      <div className={styles.icons}>
-        <Link className={styles.mainicon} {...icon}/>
-        {icons.length > 0 && icons.map((item, index) => (
-          <Link key={index} className={styles.subicon} {...item} />
-        ))}
+      {(icon || icons.length > 0) && (
+        <div className={cn(styles.cl, styles.icons)}>
+          {icon && <Link className={cn(styles.rl, styles.mainicon)} {...icon}/>}
+          {icons.length > 0 && icons.map((item, index) => (
+            <Link key={index} className={cn(styles.rl, styles.subicon)} {...item} />
+          ))}
+        </div>
+      )}
+      {(name || description) && (
+        <div className={styles.cl}>
+          {name && <h1 className={cn(styles.cs, styles.name)}>{name}</h1>}
+          {description && <div className={cn(styles.cs, styles.desc)}>{description}</div>}
+        </div>
+      )}
+      <div className={styles.cl}>
+        <div className={cn(styles.cs, styles.kinds)}>
+          {showVersion && (
+            <Select 
+              className={cn(styles.rs, styles.version)} 
+              placeholder="version"
+              value={version} 
+              options={versions}
+              onChange={(value, option) => {
+                if (onChangeVersion) {
+                  onChangeVersion(value, option, docData)
+                }
+              }}
+            />
+          )}
+          {showLanguage && (
+            <Select 
+              className={cn(styles.rs, styles.language)} 
+              placeholder="language"
+              value={language}
+              options={languages}
+              onChange={(value, option) => {
+                if (onChangeLanguage) {
+                  onChangeLanguage(value, option, docData)
+                }
+              }}
+            />
+          )}
+        </div>
+        <SwitchTheme className={styles.cs}/>
       </div>
-      <h1 className={styles.name}>{name}</h1>
-      <div className={styles.desc}>{description}</div>
-      <div className={styles.selects}>
-        <Select 
-          className={styles.version} 
-          placeholder="version"
-          value={version} 
-          options={versions}
-          onChange={(value, option) => {
-            if (onChangeVersion) {
-              onChangeVersion(value, option, docData)
-            }
+      {!hideCollection && (
+        <BoxSelect 
+          className={cn(styles.cl, styles.collection)}
+          vertical={true}
+          value={collection.value}
+          options={collections}
+          onChange={(_a, option: any) => {
+            setCollection(option)
           }}
         />
-        <Select 
-          className={styles.language} 
-          placeholder="language"
-          value={language}
-          options={languages}
-          onChange={(value, option) => {
-            if (onChangeLanguage) {
-              onChangeLanguage(value, option, docData)
-            }
-          }}
-        />
-      </div>
-      <SwitchTheme className={styles.switchtheme}/>
-      <BoxSelect 
-        className={styles.collection}
-        vertical={true}
-        value={collection.value}
-        options={collections}
-        onChange={(_a, option: any) => {
-          setCollection(option)
-        }}
-      />
+      )}
       <Contents
-        className={styles.contents}
+        className={styles.cl}
         value={value}
         options={collection.contents}
         getHref={getHref}
@@ -100,7 +117,7 @@ export function Side<T,D>({
         }}
       />
       {children && (
-        <div className={styles.footer}>
+        <div className={styles.cl}>
           {children}
         </div>
       )}

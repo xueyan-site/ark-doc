@@ -7,6 +7,18 @@
     width: 0;
     display: none;
   }
+  .cl:not(:first-child) {
+    margin-top: 16px;
+  }
+  .cs:not(:first-child) {
+    margin-top: 8px;
+  }
+  .rl:not(:first-child) {
+    margin-left: 16px;
+  }
+  .rs:not(:first-child) {
+    margin-left: 8px;
+  }
   .icons {
     display: flex;
     flex-flow: row nowrap;
@@ -18,41 +30,27 @@
     .subicon {
       width: 40px;
       height: 40px;
-      margin-left: 16px;
     }
   }
   .name {
-    margin: 16px 0 0;
+    margin: 0;
     font-size: 20px;
     font-weight: 600;
   }
   .desc {
-    margin-top: 8px;
     font-size: 16px;
   }
-  .selects {
+  .kinds {
     display: flex;
     flex-flow: row nowrap;
-    margin-top: 16px;
     .version {
       width: 96px;
     }
     .language {
       flex: 1;
-      margin-left: 8px;
     }
   }
-  .switchtheme {
-    margin-top: 8px;
-  }
   .collection {
-    margin-top: 16px;
     border: none;
-  }
-  .contents {
-    margin-top: 16px;
-  }
-  .footer {
-    margin-top: 16px;
   }
 }

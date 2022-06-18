@@ -37,19 +37,19 @@ export interface DocConfig<T,D> {
   /** 文章集合列表 */
   collections?: Collection<T,D>[]
   /** 目录名 */
-  name: string;
+  name?: string;
   /** 文档描述 */
-  description: React.ReactNode
+  description?: React.ReactNode
   /** 文档主图标 */
-  icon: ImageLinkProps
+  icon?: ImageLinkProps
   /** 其余图标列表 */
   icons?: ImageLinkProps[]
   /** 当前版本 */
-  version: string
+  version?: string
   /** 版本列表 */
   versions?: SelectOption<string>[]
   /** 当前语言 */
-  language: string
+  language?: string
   /** 语言列表 */
   languages?: SelectOption<string>[]
 }

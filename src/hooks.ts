@@ -1,23 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 
-// export function useWindowRect(): [number, number] {
-//   const [rect, setRect] = useState<[number,number]>([
-//     window.innerWidth,
-//     window.innerHeight
-//   ])
-//   useEffect(() => {
-//     const handleResize = () => setRect([
-//       window.innerWidth,
-//       window.innerHeight
-//     ])
-//     window.addEventListener('resize', handleResize)
-//     return () => {
-//       window.removeEventListener('resize', handleResize)
-//     }
-//   }, [])
-//   return rect
-// }
-
 export function useDomRect<D extends Element>(): [
   React.RefObject<D>, number, number
 ] {
