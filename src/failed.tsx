@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './failed.scss'
-import { Button } from 'xueyan-react-button'
-import { ErrorIcon } from 'xueyan-react-icon'
+import { Button } from 'ark-button'
+import { ErrorIcon } from 'sicon'
 
 export function Failed() {
   return (

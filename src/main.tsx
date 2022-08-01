@@ -6,7 +6,7 @@ import { Failed } from './failed'
 import { Loading } from './loading'
 import { useDocData } from './store'
 import { PageTurner } from './page-turner'
-import type { ContentsProps } from 'xueyan-react-contents'
+import type { ContentsProps } from 'ark-contents'
 import type { DocProps } from './doc'
 
 enum STATUS {

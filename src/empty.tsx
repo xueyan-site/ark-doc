@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './empty.scss'
-import { FileIcon } from 'xueyan-react-icon'
+import { FileIcon } from 'sicon'
 
 export function Empty() {
   return (

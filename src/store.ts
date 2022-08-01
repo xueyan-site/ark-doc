@@ -1,7 +1,7 @@
-import { Store, createProvider, useData, useStore } from 'xueyan-react-store'
-import { parseContentsOptions } from 'xueyan-react-contents'
-import type { SelectOption } from 'xueyan-react-select'
-import type { ContentsProOption } from 'xueyan-react-contents'
+import { Store, createProvider, useData, useStore } from 'stine'
+import { parseContentsOptions } from 'ark-contents'
+import type { SelectOption } from 'ark-select'
+import type { ContentsProOption } from 'ark-contents'
 import type { CollectionStruct, ImageLinkProps, DocConfig } from './types'
 
 export interface DocData<T,D> {

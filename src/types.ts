@@ -1,6 +1,6 @@
-import type { ContentsOption, ContentsOptionStruct, ContentsProOption } from 'xueyan-react-contents'
-import type { LabelLinkProps } from 'xueyan-react-link'
-import type { SelectOption } from 'xueyan-react-select'
+import type { ContentsOption, ContentsOptionStruct, ContentsProOption } from 'ark-contents'
+import type { LabelLinkProps } from 'ark-link'
+import type { SelectOption } from 'ark-select'
 import type { DocData } from './store'
 
 export type ImageLinkProps = Omit<LabelLinkProps, 'children'>

@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { Side } from './side'
 import { Main } from './main'
 import styles from './narrow-screen.scss'
-import { Drawer } from 'xueyan-react-drawer'
-import { MenuIcon } from 'xueyan-react-icon'
+import { Drawer } from 'ark-drawer'
+import { MenuIcon } from 'sicon'
 import type { DocProps } from './doc'
 
 interface NarrowScreenProps<T,D> extends Pick<

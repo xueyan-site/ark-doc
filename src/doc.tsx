@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from 'react'
 import cn from 'classnames'
-import { ContentsProps } from 'xueyan-react-contents'
+import { ContentsProps } from 'ark-contents'
 import { DocProvider } from './store'
 import { WideScreen } from './wide-screen'
 import { NarrowScreen } from './narrow-screen'

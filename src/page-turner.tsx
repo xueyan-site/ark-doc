@@ -1,11 +1,11 @@
 import React from 'react'
 import cn from 'classnames'
-import { ArrowIcon } from 'xueyan-react-icon'
-import { Link } from 'xueyan-react-link'
-import { ContentsProOption } from "xueyan-react-contents"
+import { ArrowIcon } from 'sicon'
+import { Link } from 'ark-link'
+import { ContentsProOption } from "ark-contents"
 import styles from './page-turner.scss'
 import { useDocData } from './store'
-import type { ContentsProps } from 'xueyan-react-contents'
+import type { ContentsProps } from 'ark-contents'
 import type { DocProps } from './doc'
 
 interface PageTurnerProps<T,D> extends

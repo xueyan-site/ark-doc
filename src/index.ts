@@ -1,4 +1,4 @@
-import 'xueyan-react-style'
+import 'solor'
 
 export { Doc } from './doc'
 export { useDocData, useDocStore } from './store'

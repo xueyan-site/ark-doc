@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 import styles from './loading.scss'
-import { FadeTransition } from 'xueyan-react-transition'
+import { FadeTransition } from 'ark-transition'
 
 function Skeleton({
   className,

@@ -2,7 +2,7 @@ import React from 'react'
 import { PageDoc } from 'com/page-doc'
 import pkg from '../../../package.json'
 import type { PageProps } from 'xueyan-react'
-import type { Collection } from 'xueyan-react-doc'
+import type { Collection } from 'ark-doc'
 
 const COLLECTIONS: Collection<string,string>[] = [
   {
