@@ -1,19 +1,19 @@
 import React from 'react'
-import { Article, Segment } from 'xueyan-react-markdown'
+import { Article, Segment } from 'ark-markdown'
 import BLACK_IMG from './black.webp'
 import LIGHT_IMG from './light.webp'
 
 const MARK1 = `
-文档组件，它适用于项目文档、教程、书籍、散文、日志等场景。
-
 <p>
   <img style="width: 450px" src="${BLACK_IMG}"/>
   <img style="width: 450px" src="${LIGHT_IMG}"/>
 </p>
 
-主题使用 [xueyan-react-style](/xueyan-react-style) 实现，支持配置多语言、多版本。
+文档组件，适用于项目文档、教程、书籍、散文、日志等场景。
 
-> 它的使用效果如本站点所示。
+使用了 [solor](/solor) 主题包，支持配置多语言、多版本。
+
+使用效果，如本站点所示。
 `
 
 export default function Main() {

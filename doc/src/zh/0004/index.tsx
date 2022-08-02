@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article, Segment } from 'xueyan-react-markdown'
+import { Article, Segment } from 'ark-markdown'
 
 const MARK1 = `
 设置图标
@@ -81,7 +81,7 @@ const COLLECTIONS: Collection<string,string>[] = [
 ]
 \`\`\`
 
-配置文档节点
+配置文档
 
 \`\`\`
 <Doc
@@ -92,17 +92,20 @@ const COLLECTIONS: Collection<string,string>[] = [
   collections={COLLECTIONS}
   name="文档名称"
   description="文档描述"
+  value="0001"
   version="1.0.0"
   language="zh"
-  value="0001"
-  onChangeLanguage={value => {
-    // 修改语言
-  }}
   getHref={option => {
-    // 提前生成文章URL
+    // 根据选项信息，生成文章URL
+    // return 'https://xxx.com/xxx/xxx'
   }}
   onChange={(value, option) => {
-    // 或者点击时修改URL
+    // 或者，点击选项时，触发此函数，修改URL
+    // location.href = 'https://xxx.com/xxx/xxx'
+  }}
+  onChangeLanguage={value => {
+    // 修改语言
+    // location.href = 'https://xxx.com/xxx/xxx'
   }}
 >
   侧边栏底部的文字

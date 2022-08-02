@@ -54,7 +54,7 @@ export const Doc = forwardRef<DocRef, DocProps<any, any>>(({
         style={style}
         className={cn(className, styles.xrdoc)} 
       >
-        {width >= 900 ? (
+        {width >= 1000 ? (
           <WideScreen 
             width={width}
             getHref={getHref}
@@ -62,7 +62,7 @@ export const Doc = forwardRef<DocRef, DocProps<any, any>>(({
             onChangeVersion={onChangeVersion}
             onChangeLanguage={onChangeLanguage}
           >{children}</WideScreen>
-        ) : width >= 200 ? (
+        ) : width >= 320 ? (
           <NarrowScreen
             getHref={getHref}
             onChange={onChange}

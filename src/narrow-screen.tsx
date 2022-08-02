@@ -24,7 +24,7 @@ export function NarrowScreen<T,D>({
 }: NarrowScreenProps<T,D>) {
   const [visible, setVisible] = useState<boolean>()
   return (
-    <div className={styles.xrdocnarrowscreen}>
+    <div className={styles.arkdocnarrowscreen}>
       <Drawer 
         direction="left"
         value={visible}

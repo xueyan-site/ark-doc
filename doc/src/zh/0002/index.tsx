@@ -1,5 +1,5 @@
 import React from 'react'
-import { Article, Segment } from 'xueyan-react-markdown'
+import { Article, Segment } from 'ark-markdown'
 
 const MARK1 = `
 文档组件
@@ -21,10 +21,6 @@ interface DocRef {
 
 ## DocProps
 
-继承 \`DocConfig\` 所有属性
-
-继承 \`ContentsProps\` 部分属性：\`getHref\` 
-
 | 属性 | 名称 | 类型 | 说明 |
 | - | - | - | - |
 | className | 类名 | \`? string\` |  |
@@ -33,6 +29,9 @@ interface DocRef {
 | onChange | 切换页面 | \`? DocOnChange<T,D>\` |  |
 | onChangeVersion | 切换版本 | \`? DocOnChangeVersion<T,D>\` |  |
 | onChangeLanguage | 切换语言 | \`? DocOnChangeLanguage<T,D>\` |  |
+
+> 继承 [DocConfig](#docconfig) 所有属性  
+> 继承 [ContentsProps](/ark-contents?doc=0002#contentsprops) 部分属性：\`getHref\` 
 
 ## DocConfig
 
@@ -69,7 +68,7 @@ interface DocConfig<T,D> {
 type ImageLinkProps = Omit<LabelLinkProps, 'children'>
 \`\`\`
 
-> 其他类型：[LabelLinkProps](/xueyan-react-link)
+> 涉及类型：[LabelLinkProps](/ark-link?doc=0003#labellinkprops)
 
 ## Collection
 
@@ -81,14 +80,14 @@ interface Collection<T,D> extends SelectOption<D> {
 
 \`\`\`typescript
 interface CollectionContentsOption<T> extends ContentsOption<T> {
-  /** 文章顶部横幅 */
+  /** 顶部横幅，例如：https://xxx.com/xxx.webp */
   banner?: string
   /** 文章内容，例如：() => import('./0001') */
   content?: () => Promise<{ default: React.ComponentType }>
 }
 \`\`\`
 
-> 其他类型：[SelectOption](/xueyan-react-select)、[ContentsOption](/xueyan-react-contents)
+> 涉及类型：[SelectOption](/ark-select?doc=0002#selectoption)、[ContentsOption](/ark-contents?doc=0002#contentsoption)
 
 ## CollectionStruct
 
@@ -108,7 +107,7 @@ type DocOnChange<T,D> = (
 ) => void
 \`\`\`
 
-> 其他类型：[DocData](?doc=0003#docdata)、[ContentsProOption](/xueyan-react-contents)
+> 涉及类型：[DocData](?doc=0003#docdata)、[ContentsProOption](/ark-contents?doc=0002#contentsprooption)
 
 ## DocOnChangeVersion
 
@@ -128,37 +127,6 @@ type DocOnChangeLanguage<T,D> = (
   option: SelectOption<string>,
   docData: DocData<T,D>
 ) => void
-\`\`\`
-
-## DocData
-
-\`\`\`typescript
-interface DocData<T,D> {
-  /** 已选值 */
-  value: T;
-  /** 当前内容 */
-  option: ContentsProOption<T>
-  /** 当前合集 */
-  collection: CollectionStruct<T,D>
-  /** 合集列表 */
-  collections: CollectionStruct<T,D>[]
-  /** 目录名 */
-  name: string;
-  /** 文档描述 */
-  description: React.ReactNode
-  /** 文档主图标 */
-  icon: ImageLinkProps
-  /** 其余图标列表 */
-  icons: ImageLinkProps[]
-  /** 当前版本 */
-  version: string
-  /** 版本列表 */
-  versions: SelectOption<string>[]
-  /** 当前语言 */
-  language: string
-  /** 语言列表 */
-  languages: SelectOption<string>[]
-}
 \`\`\`
 `
 

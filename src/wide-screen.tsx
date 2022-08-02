@@ -26,12 +26,12 @@ export function WideScreen<T,D>({
 }: WideScreenProps<T,D>) {
   return (
     <div className={cn(
-      styles.xrdocwidescreen,
+      styles.arkdocwidescreen,
       width >= 1600
         ? styles.large
-        : width >= 1200
+        : width >= 1350
         ? styles.normal
-        : width >= 1048
+        : width >= 1160
         ? styles.middle
         : styles.small
     )}>
