@@ -3,16 +3,16 @@ import { HookFunctionIcon, ComponentIcon } from 'sicon'
 import { PageDoc } from 'com/page-doc'
 import pkg from '../../../package.json'
 import type { PageProps } from 'sdin-react'
-import type { Collection } from 'ark-doc'
+import type { ContentsOption } from 'ark-contents'
 
 const HOOK_ICON = <HookFunctionIcon color="var(--green)" />
 const COMPONENT_ICON = <ComponentIcon color="var(--blue)" />
 
-const COLLECTIONS: Collection<string,string>[] = [
+const CONTENTS: ContentsOption<string>[] = [
   {
     value: '9999',
     label: '指南',
-    contents: [
+    children: [
       {
         value: '0001',
         label: '介绍',
@@ -28,7 +28,7 @@ const COLLECTIONS: Collection<string,string>[] = [
   {
     value: '9998',
     label: '接口文档',
-    contents: [
+    children: [
       {
         value: '0002',
         label: 'Doc',
@@ -51,7 +51,7 @@ export default function Index(props: PageProps) {
       {...props}
       language="zh"
       version={pkg.version}
-      collections={COLLECTIONS}
+      contents={CONTENTS}
       name={pkg.name}
       description={pkg.description}
     />

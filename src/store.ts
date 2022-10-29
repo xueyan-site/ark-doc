@@ -41,10 +41,12 @@ export function useDocStore<T,D>() {
   return useStore<DocStore<T,D>>(STORE_KEY)
 }
 
-export function parseCollections<T,D>(
-  collections: DocConfig<T,D>['collections']
-): CollectionStruct<T,D>[] {
-  const origin = collections || []
+function parseCollections<T,D>(props: DocConfig<T,D>): CollectionStruct<T,D>[] {
+  const origin = props.collections || (props.contents && [{
+    label: '',
+    value: ':)and:(' as any,
+    contents: props.contents,
+  }]) || []
   const list: CollectionStruct<T,D>[] = []
   let prev: CollectionStruct<T,D>
   origin.forEach(item => {
@@ -67,9 +69,9 @@ export function parseCollections<T,D>(
   return list
 }
 
-export function parseValue<T,D>(
-  collections: CollectionStruct<T,D>[],
-  value: DocConfig<T,D>['value']
+function parseValue<T,D>(
+  props: DocConfig<T,D>,
+  collections: CollectionStruct<T,D>[]
 ): {
   value: T
   option: ContentsProOption<T>
@@ -77,10 +79,10 @@ export function parseValue<T,D>(
 } {
   let option: ContentsProOption<T> | undefined
   let collection: CollectionStruct<T,D> | undefined
-  if (value !== undefined) {
+  if (props.value !== undefined) {
     for (let i = 0; i < collections.length; i++) {
       const doc = collections[i]
-      const opt = doc.contents.map.get(value)
+      const opt = doc.contents.map.get(props.value)
       if (opt) {
         option = opt
         collection = doc
@@ -110,8 +112,8 @@ export function parseValue<T,D>(
 }
 
 function parseProps<T,D>(props: DocConfig<T,D>): DocData<T,D> {
-  const collections = parseCollections<T,D>(props.collections)
-  const { value, option, collection } = parseValue<T,D>(collections, props.value)
+  const collections = parseCollections<T,D>(props)
+  const { value, option, collection } = parseValue<T,D>(props, collections)
   return {
     value,
     option,

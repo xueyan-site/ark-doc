@@ -53,7 +53,7 @@ export function Side<T,D>({
         <div className={cn(styles.cl, styles.icons)}>
           {icon && <Link className={cn(styles.rl, styles.mainicon)} {...icon}/>}
           {icons.length > 0 && icons.map((item, index) => (
-            <Link key={index} className={cn(styles.rl, styles.subicon)} {...item} />
+            <Link key={index} className={cn(styles.rs, styles.subicon)} {...item} />
           ))}
         </div>
       )}
@@ -117,7 +117,7 @@ export function Side<T,D>({
         }}
       />
       {children && (
-        <div className={styles.cl}>
+        <div className={cn(styles.cl, styles.footer)}>
           {children}
         </div>
       )}

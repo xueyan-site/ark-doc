@@ -10,7 +10,7 @@
     "serve": "sdin serve"
   },
   "dependencies": {
-    "ark-markdown": "^1.0.0",
+    "ark-markdown": "^1.0.1",
     "ark-select": "^1.0.0",
     "classnames": "^2.3.0",
     "lodash": "^4.14.0",

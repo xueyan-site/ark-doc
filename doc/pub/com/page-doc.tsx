@@ -9,7 +9,7 @@ import type { SelectOption } from 'ark-select'
 
 const ICON: ImageLinkProps = {
   src: P_ASSETS_PATH + 'project.png',
-  href: P_PUBLIC_PATH
+  href: 'https://npmjs.com/package/' + pkg.name
 }
 
 const ICONS: ImageLinkProps[] = [

@@ -82,20 +82,22 @@ export function Main<T,D>({
           Render ? <Render /> : <Empty />
         ) : null}
       </div>
-      <div className={styles.turners}>
-        <PageTurner
-          data={option.prev}
-          direction="left"
-          getHref={getHref}
-          onChange={onChange}
-        />
-        <PageTurner
-          data={option.next}
-          direction="right"
-          getHref={getHref}
-          onChange={onChange}
-        />
-      </div>
+      {status === STATUS.LOADING ? null : (
+        <div className={styles.turners}>
+          <PageTurner
+            data={option.prev}
+            direction="left"
+            getHref={getHref}
+            onChange={onChange}
+          />
+          <PageTurner
+            data={option.next}
+            direction="right"
+            getHref={getHref}
+            onChange={onChange}
+          />
+        </div>
+      )}
     </div>
   )
 }

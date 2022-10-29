@@ -39,9 +39,11 @@ interface DocRef {
 interface DocConfig<T,D> {
   /** 已选值（当前文章ID） */
   value?: T;
-  /** 文章集合列表 */
+  /** 目录 */
+  contents?: ContentsOption<T>[]
+  /** 多个目录（优先级高于 contents） */
   collections?: Collection<T,D>[]
-  /** 目录名 */
+  /** 文档名称 */
   name?: string;
   /** 文档描述 */
   description?: React.ReactNode

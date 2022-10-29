@@ -26,10 +26,11 @@
     .mainicon {
       width: 100px;
       height: 100px;
+      margin-right: 8px;
     }
     .subicon {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
     }
   }
   .name {
@@ -52,5 +53,10 @@
   }
   .collection {
     border: none;
+  }
+  .footer {
+    border-top: 1px dashed var(--area2);
+    padding-top: 8px;
+    font-size: 14px;
   }
 }
